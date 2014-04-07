@@ -1,2 +1,20 @@
+html {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    background-color: #808080;
+}
+
 body {
+    margin: 10px 20px;
+    background-color: #808080;
+    border-width: 2px;
+    border-color: #AAAAAA;
+    border-style: solid;
+    padding: 20px;
+}
+
+#navigation {
+    width: 100%;
+    text-align: right;
 }

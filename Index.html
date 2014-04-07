@@ -4,6 +4,9 @@
     <head>
         <meta charset="utf-8" />
         <title>OS-PD</title>
+        <link type="text/css" href="style.css" rel="stylesheet" />
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="main.js"></script>
     </head>
     <body>
         <header>
@@ -11,5 +14,17 @@
                 Operatīvās atmiņas pārvaldības demonstrācija, iekļaujot operatīvās atmiņas lapošanas mehānismu.
             </h1>
         </header>
+        <div id="navigation">
+           <select onchange="setPage(this)">
+               <option value="dynamic_relocation">Dynamic relocation using a relocation register</option>
+               <option>qwe</option>
+               <option>pfff</option>
+           </select>
+        </div>
+        <div id="content_div">
+            <div id="legend"></div>
+            <table id="parameters">
+            </table>
+        </div>
     </body>
 </html>
