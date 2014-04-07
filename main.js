@@ -10,7 +10,10 @@ function onLoad(){
 function setPage(url){
     switch(url.value){
         case "dynamic_relocation":
-
+            initParameters();
+            addParameter("logical address", "logic");
+            addParameter("relocation register", "reloc");
+            document.getElementById("submitButton").addEventListener('click', dynamicRelocationStart, false);
             break;
     }
     
@@ -30,4 +33,20 @@ function addParameter(labelName, inputId) {
     row.appendChild(cell2);
     var cont = document.getElementById("parameters")
     cont.appendChild(row);
+}
+
+function getParameter(inputId) {
+    var input = document.getElementById(inputId);
+    return input.value;
+}
+
+function initParameters(){
+    var parentDiv = document.getElementById("parameters");
+    while (parentDiv.childElementCount > 0) {
+        parentDiv.removeChild(parentDiv.childNodes[0]);
+    }
+}
+
+function dynamicRelocationStart(sender, args){
+    alert(getParameter("logic"));
 }
