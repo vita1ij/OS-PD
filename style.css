@@ -18,3 +18,11 @@ body {
     width: 100%;
     text-align: right;
 }
+
+#myCanvas {
+    border-style: double;
+    border-bottom-color: #9cb08f;
+    width: 640px;
+    height: 480px;
+    margin: auto;
+}

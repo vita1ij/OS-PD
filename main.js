@@ -1,21 +1,21 @@
 window.onload = onLoad;
 
 function onLoad(){
-    addParameter("foo", "bar");
-    addParameter("foo", "bar");
-    addParameter("foo", "bar");
 }
 
 
 function setPage(url){
+    var button = document.getElementById("submitButton");
+    button.removeEventListener(dynamicRelocationStart);
     switch(url.value){
         case "dynamic_relocation":
             initParameters();
             addParameter("logical address", "logic");
             addParameter("relocation register", "reloc");
-            document.getElementById("submitButton").addEventListener('click', dynamicRelocationStart, false);
+            button.addEventListener('click', dynamicRelocationStart, false);
             break;
     }
+    window.location = "#content_div";
     
 }
 
@@ -48,5 +48,28 @@ function initParameters(){
 }
 
 function dynamicRelocationStart(sender, args){
-    alert(getParameter("logic"));
+
+    dynamicRelocationStartBasics();
+}
+
+function dynamicRelocationStartBasics(){
+    var canvas = document.getElementById("myCanvas");
+    var context = canvas.getContext("2d");
+    
+    //clear
+    context.fillStyle = "#FFFFFF";
+    context.clearRect(0, 0, 640, 480);
+
+    //draw boxes
+    context.fillStyle = "#AAAAAA";
+    context.fillRect(10, 50, 50, 50);
+    context.fillRect(80, 25, 100, 100);
+    context.fillRect(210, 25, 75, 100);
+
+    context.fillStyle = "#000000";
+    context.font="10px Georgia";
+    context.fillText("CPU", 25,70);
+    context.fillText("relocation", 100,40);
+    context.fillText("register", 105,50);
+    context.fillText("memory", 225,40);
 }

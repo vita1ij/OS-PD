@@ -1,6 +1,6 @@
 OS-PD
 =====
-Adding new stuff:
+Adding new stuff: <br/>
 1.      in index.html add <option> with your stuff <br/>
 2.      in main.js edit switch in setPage() function <br/>
 2.1.    add initParameters(); for old parameters deletion <br/>
