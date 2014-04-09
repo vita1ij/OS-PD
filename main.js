@@ -33,7 +33,8 @@ function setPage(url){
             $("#submitButton").on('click', dynamicRelocation_Start);
             break;
         case "2":
-            addParameter("Size of new application (KB): ", "appSize")
+            addParameter("Size of new application (KB): ", "appSize");
+            addDropBox("select application: ", "useApp");
             initBinding();
             break;
         case "swapping":
@@ -58,6 +59,21 @@ function addParameter(labelName, inputId) {
     input.name = "customParameter";
     cell1.textContent = labelName;
     cell2.appendChild(input);
+    row.appendChild(cell1);
+    row.appendChild(cell2);
+    var cont = document.getElementById("parameters")
+    cont.appendChild(row);
+}
+
+function addDropBox(labelName, selectId)
+{
+    var row = document.createElement("tr");
+    var cell1 = document.createElement("td");
+    var cell2 = document.createElement("td");
+    var select = document.createElement("select");
+    select.id = selectId;
+    cell1.textContent = labelName;
+    cell2.appendChild(select);
     row.appendChild(cell1);
     row.appendChild(cell2);
     var cont = document.getElementById("parameters")
