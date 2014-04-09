@@ -1,18 +1,22 @@
 window.onload = onLoad;
 
 function onLoad(){
+    
 }
 
 
 function setPage(url){
-    var button = document.getElementById("submitButton");
-    button.removeEventListener(dynamicRelocationStart);
+    $("#submitButton").off('click', dynamicRelocationStart);
     switch(url.value){
         case "dynamic_relocation":
             initParameters();
             addParameter("logical address", "logic");
             addParameter("relocation register", "reloc");
-            button.addEventListener('click', dynamicRelocationStart, false);
+            $("#submitButton").on('click', dynamicRelocationStart);
+            break;
+        case "2":
+            addParameter("Size of new application (KB): ", "appSize")
+            initBinding();
             break;
     }
     window.location = "#content_div";
