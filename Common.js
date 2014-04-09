@@ -3,7 +3,6 @@
 **************************************/
 (function () {
     this.Common = this.Common || {}
-    alert("her");
     //Canvas
     function getCanvas() {
         if (this.canvas) return this.canvas;
