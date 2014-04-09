@@ -41,6 +41,10 @@ function setPage(url){
             addParameter("Process memory amount", "memAmount");
             $("#submitButton").on('click', startTheSwap);
             initSwap();
+            break;
+        case "segmentation":
+            initSegmentation();
+            break;
     }
     window.location = "#content_div";
     
