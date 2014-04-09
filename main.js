@@ -36,6 +36,10 @@ function setPage(url){
             addParameter("Size of new application (KB): ", "appSize")
             initBinding();
             break;
+        case "swapping":
+            addParameter("Process memory amount", "memAmount");
+            $("#submitButton").on('click', startTheSwap);
+            initSwap();
     }
     window.location = "#content_div";
     
