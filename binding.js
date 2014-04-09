@@ -5,7 +5,7 @@ var memBar;
 
 function MemBar(x, y, height)
 {
-    this.apps = [];
+    this.apps = []
     this.x = x;
     this.y = y;
     this.height = height;
