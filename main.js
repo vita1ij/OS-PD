@@ -6,10 +6,20 @@ function onLoad(){
 
 
 function setPage(url){
-    $("#submitButton").off('click', dynamicRelocationStart);
+    //remove all events
+    var oldElement = document.getElementById("submitButton");
+    var newElement = oldElement.cloneNode(true);
+    oldElement.parentNode.replaceChild(newElement, oldElement);
+    //delete old parameters
+    initParameters();
+    //clear Canvas
+    var canvas = document.getElementById("myCanvas");
+    ctx = canvas.getContext("2d");
+    ctx.fillStyle="#B0B0B0";
+    ctx.fillRect(0,0,WIDTH,HEIGHT);
+    //init
     switch(url.value){
         case "dynamic_relocation":
-            initParameters();
             addParameter("logical address", "logic");
             addParameter("relocation register", "reloc");
             $("#submitButton").on('click', dynamicRelocationStart);
