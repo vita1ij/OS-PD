@@ -4,6 +4,12 @@
 (function () {
     this.Common = this.Common || {}
 
+    //Canvas
+    function getCanvas() {
+        if (this.canvas) return this.canvas;
+        if (document.getElementById("myCanvas")) return document.getElementById("myCanvas");
+    }
+
     //Canvas context
     this.ctx = function () {
         if (this.ctx) return this.ctx;
@@ -14,9 +20,9 @@
 
     this.ArrowHeadLen = 10;   // length of head in pixels
 
-    Common.ClearCanvas = function(){
-        ctx.fillStyle="#B0B0B0";
-        ctx.fillRect(0,0,canvas.width,canvas.height);
+    Common.ClearCanvas = function () {
+        ctx.fillStyle = "#B0B0B0";
+        ctx.fillRect(0, 0, getCanvas().width, getCanvas().height);
     }
 
     Common.Box = function (x, y, width, height, text, color) {
@@ -47,8 +53,9 @@
         ctx.stroke();
     }
 
-    Common.DrawText = function (text, x, y, fontSize) {
+    Common.DrawText = function (text, x, y, fontSize, fontColor) {
         ctx.font = fontSize + 'pt Arial';
+        ctx.strokeStyle = fontColor || '#000000';
         for (var i = 0; i < text.length; i++) {
             ctx.strokeText(text[i], x + 5, y + 15 - ((text.length - i) * (fontSize + 5)));
         }

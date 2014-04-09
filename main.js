@@ -2,7 +2,8 @@ window.onload = onLoad;
 
 //todo neeD?
 function onLoad(){
-    
+    promise = setTimeout(2000); 
+
 }
 
 /*******************************
