@@ -1,5 +1,12 @@
+
 OS-PD
 =====
+Important
+=====
+Please, all common reusable classes put in Common.js
+If u need to draw a box - use Common.Box(x,y,width,height,text, color)
+(text is array)
+
 Adding new stuff: <br/>
 1.      in index.html add <option> with your stuff <br/>
 2.      in main.js edit switch in setPage() function <br/>
