@@ -49,6 +49,7 @@ function initMemoryAccess_Paint(status){
     Common.DrawArrow(250, 350, 250, 400, (status != 1) ? "black" : "red");
     Common.DrawArrow(400, 350, 400, 400, (status != 2) ? "black" : "red");
 
+    Common.DrawText(["addressing error"], 250, 450,12);
 }
 
 function MemoryAccess_Start(){
@@ -75,5 +76,5 @@ function MemoryAccess_Start(){
 
     Common.DrawText([address],75, 325, 10);
     Common.DrawText([base],225, 175, 10);
-    Common.DrawText([limit + address],375, 175, 10);
+    Common.DrawText([limit + base],375, 175, 10);
 }
