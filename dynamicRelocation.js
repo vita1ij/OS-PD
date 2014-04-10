@@ -14,7 +14,7 @@ function dynamicRelocation_Start(sender, args){
 }
 
 function dynamicRelocation_init(){
-
+    Common.ClearCanvas();
     //init boxes
     cpuBox = new Common.Box(50, 150, 100, 200, ["CPU"], '#FFFFFF');
     relocationBox = new Common.Box(250, 150, 100, 200, ["relocation", "register"], '#FFFFFF');

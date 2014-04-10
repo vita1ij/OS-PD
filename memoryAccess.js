@@ -45,7 +45,7 @@ function initMemoryAccess_Paint(status){
     Common.DrawArrow(300, 325, 350, 325, (status == 0 || status == 1) ? "black" : "green");
     Common.DrawArrow(450, 325, 500, 325, (status != 3) ? "black" : "green");
     Common.DrawArrow(250, 200, 250, 300, (status == 0) ? "black" : "green");
-    Common.DrawArrow(400, 200, 400, 300, (status == 0) ? "black" : "green");
+    Common.DrawArrow(400, 200, 400, 300, (status != 2 && status != 3) ? "black" : "green");
     Common.DrawArrow(250, 350, 250, 400, (status != 1) ? "black" : "red");
     Common.DrawArrow(400, 350, 400, 400, (status != 2) ? "black" : "red");
 
@@ -73,7 +73,7 @@ function MemoryAccess_Start(){
         initMemoryAccess_Paint(3)
     }
 
-    Common.DrawText([base],75, 325, 10);
-    Common.DrawText([limit],225, 175, 10);
+    Common.DrawText([address],75, 325, 10);
+    Common.DrawText([base],225, 175, 10);
     Common.DrawText([limit + address],375, 175, 10);
 }
