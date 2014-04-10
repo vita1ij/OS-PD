@@ -65,7 +65,7 @@ function addParameter(labelName, inputId) {
     cell2.appendChild(input);
     row.appendChild(cell1);
     row.appendChild(cell2);
-    var cont = document.getElementById("parameters")
+    var cont = document.getElementById("parameters");
     cont.appendChild(row);
 }
 
@@ -80,7 +80,7 @@ function addDropBox(labelName, selectId)
     cell2.appendChild(select);
     row.appendChild(cell1);
     row.appendChild(cell2);
-    var cont = document.getElementById("parameters")
+    var cont = document.getElementById("parameters");
     cont.appendChild(row);
 }
 

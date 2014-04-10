@@ -1,6 +1,7 @@
 // Elements
 var WIDTH, HEIGHT;
 var ctx, logMem, physMem, memTable;
+var COUNTER;
 
 function LogicalMemory(x, y, radius) {
     this.x = x;
@@ -40,10 +41,20 @@ function drawSegment(x, y, title, subTitle, color) {
 }
 
 LogicalMemory.prototype.fill = function() {
-    drawSegment(this.x-80, this.y-80, "Code", "Segment1", "red");
-    drawSegment(this.x-80, this.y+10, "Data", "Segment2", "orange");
-    drawSegment(this.x+10, this.y-80, "Stack", "Segment3", "purple");
-    drawSegment(this.x+10, this.y+10, "Library", "Segment4", "yellow");
+    switch(COUNTER) {
+        case 3:
+            drawSegment(this.x - 80, this.y - 80, "Code", "Segment1", "red");
+            break;
+        case 9:
+            drawSegment(this.x - 80, this.y + 10, "Data", "Segment2", "orange");
+            break;
+        case 0:
+            drawSegment(this.x + 10, this.y - 80, "Stack", "Segment3", "purple");
+            break;
+        case 6:
+            drawSegment(this.x + 10, this.y + 10, "Library", "Segment4", "yellow");
+            break;
+    }
 };
 
 function PhysicalMemory(x, y, width, height) {
@@ -58,6 +69,16 @@ function PhysicalMemory(x, y, width, height) {
     ctx.lineWidth = 2;
     ctx.strokeStyle = "#1589FF";
     ctx.stroke();
+
+    // Side
+    var segH = height/14;
+    ctx.font = "16pt Calibri";
+    ctx.fillStyle = "black";
+    ctx.fillText("0", x-15, y+15);
+    ctx.fillText("3000", x-45, y+segH*3+15);
+    ctx.fillText("6000", x-45, y+segH*6+15);
+    ctx.fillText("9000", x-45, y+segH*9+15);
+    ctx.fillText("12000", x-60, y+segH*12+15);
 
     // Title
     ctx.font = "16pt Calibri";
@@ -79,10 +100,21 @@ function drawSegmentFill(x, y, width, height, title, color) {
 PhysicalMemory.prototype.fill = function() {
     var segH = this.height/14;
 
-    drawSegmentFill(this.x, this.y, this.width, segH, "Stack", "purple");
-    drawSegmentFill(this.x, this.y+2*segH, this.width, segH, "Code", "red");
-    drawSegmentFill(this.x, this.y+7*segH, this.width, segH, "Library", "yellow");
-    drawSegmentFill(this.x, this.y+12*segH, this.width, segH, "Data", "orange");
+    switch(COUNTER) {
+        case 2:
+            drawSegmentFill(this.x, this.y, this.width, segH, "Stack", "purple");
+            break;
+        case 5:
+            drawSegmentFill(this.x, this.y + 2 * segH, this.width, segH, "Code", "red");
+            break;
+        case 8:
+            drawSegmentFill(this.x, this.y + 7 * segH, this.width, segH, "Library", "yellow");
+            break;
+        case 11:
+            drawSegmentFill(this.x, this.y + 12 * segH, this.width, segH, "Data", "orange");
+            break;
+    }
+
 };
 
 function SegmentationTable(x, y, width, height) {
@@ -140,17 +172,27 @@ function drawTable(x, y, width, title1, title2, title3) {
 SegmentationTable.prototype.fill = function() {
     var newY = this.y+25;
 
-    drawTable(this.x, newY, this.width, "3", "1000", "0");
-    drawTable(this.x, newY+25, this.width, "1", "1000", "3000");
-    drawTable(this.x, newY+25*2, this.width, "4", "1000", "7000");
-    drawTable(this.x, newY+25*3, this.width, "2", "1000", "12000");
+    switch(COUNTER) {
+        case 1:
+            drawTable(this.x, newY, this.width, "3", "1000", "0");
+            break;
+        case 4:
+            drawTable(this.x, newY + 25, this.width, "1", "1000", "3000");
+            break;
+        case 7:
+            drawTable(this.x, newY + 25 * 2, this.width, "4", "1000", "7000");
+            break;
+        case 10:
+            drawTable(this.x, newY + 25 * 3, this.width, "2", "1000", "12000");
+            break;
+    }
 };
 
-function beginAnimation(e) {
+function beginAnimation() {
     logMem.fill();
     physMem.fill();
     memTable.fill();
-    return false;
+    COUNTER++;
 }
 
 function initSegmentation() {
@@ -168,5 +210,6 @@ function initSegmentation() {
     logMem = new LogicalMemory(150, HEIGHT/2, 120);
     physMem = new PhysicalMemory(WIDTH-120, 10, 100, HEIGHT-50);
     memTable = new SegmentationTable(WIDTH/2+20, (HEIGHT/2)-100, 100, 120);
-    $("#submitButton").on('click', beginAnimation());
+    $("#submitButton").on('click', beginAnimation);
+    COUNTER = 0;
 }
