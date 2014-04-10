@@ -168,5 +168,5 @@ function initSegmentation() {
     logMem = new LogicalMemory(150, HEIGHT/2, 120);
     physMem = new PhysicalMemory(WIDTH-120, 10, 100, HEIGHT-50);
     memTable = new SegmentationTable(WIDTH/2+20, (HEIGHT/2)-100, 100, 120);
-    $("#submitButton").on('click', beginAnimation());
+    $("#submitButton").on('click', beginAnimation);
 }

@@ -32,7 +32,7 @@ function setPage(url){
             addParameter("relocation register", "reloc");
             $("#submitButton").on('click', dynamicRelocation_Start);
             break;
-        case "2":
+        case "binding":
             addParameter("Size of new application (KB): ", "appSize");
             addDropBox("select application: ", "useApp");
             initBinding();
@@ -44,6 +44,9 @@ function setPage(url){
             break;
         case "segmentation":
             initSegmentation();
+            break;
+        case "memoryAccess":
+            initMemoryAccess();
             break;
     }
     window.location = "#content_div";

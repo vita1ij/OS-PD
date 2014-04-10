@@ -41,7 +41,29 @@
         }
     }
 
-    Common.DrawArrow = function (fromx, fromy, tox, toy) {
+    Common.Romb = function (x, y, halfWidth, halfHeight, color) {
+        this.x = x;
+        this.y = y;
+        this.halfWidth = halfWidth;
+        this.halfHeight = halfHeight;
+        this.color = color;
+
+        this.Draw = function () {
+            ctx.beginPath();
+            ctx.moveTo(x - halfWidth, y);
+            ctx.lineTo(x, y - halfHeight);
+            ctx.lineTo(x + halfWidth, y);
+            ctx.lineTo(x, y + halfHeight);
+            ctx.lineTo(x - halfWidth, y);
+            ctx.fillStyle = color;
+            ctx.fill();
+            ctx.strokeStyle = 'black';
+            ctx.stroke();
+        }
+    }
+
+    Common.DrawArrow = function (fromx, fromy, tox, toy, color) {
+        ctx.strokeStyle = color || '#000000';
         ctx.beginPath();
         var angle = Math.atan2(toy - fromy, tox - fromx);
         ctx.moveTo(fromx, fromy);
@@ -50,6 +72,7 @@
         ctx.moveTo(tox, toy);
         ctx.lineTo(tox - ArrowHeadLen * Math.cos(angle + Math.PI / 6), toy - ArrowHeadLen * Math.sin(angle + Math.PI / 6));
         ctx.stroke();
+        ctx.strokeStyle = '#000000';
     }
 
     Common.DrawText = function (text, x, y, fontSize, fontColor) {
@@ -58,6 +81,7 @@
         for (var i = 0; i < text.length; i++) {
             ctx.strokeText(text[i], x + 5, y + 15 - ((text.length - i) * (fontSize + 5)));
         }
+        ctx.strokeStyle = '#000000';
     }
 
 } ());

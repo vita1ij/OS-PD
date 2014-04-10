@@ -2,6 +2,11 @@ var cpuBox, relocationBox, memoryBox, relocationRegisterBox;
 var intervalId, animCount, animTotal; 
 
 function dynamicRelocation_Start(sender, args){
+    if (isNaN(parseInt(getParameter("reloc"))) || isNaN(getParameter("logic"))) {
+        alert('wrong type!');
+        return;
+    }
+    document.getElementById("submitButton").disabled = true;
     dynamicRelocation_init();
     animCount = 60;
     animTotal = 460;
@@ -14,7 +19,7 @@ function dynamicRelocation_init(){
     cpuBox = new Common.Box(50, 150, 100, 200, ["CPU"], '#FFFFFF');
     relocationBox = new Common.Box(250, 150, 100, 200, ["relocation", "register"], '#FFFFFF');
     relocationRegisterBox = new Common.Box(255, 160, 90, 50, [], '#7777FF');
-    memoryBox = new Common.Box(450, 150, 100, 200, ["memory"], '#FFFFFF');
+    memoryBox = new Common.Box(450, 150, 100, 200, ["memory"], 'yellow');
 }
 
 function dynamicRelocationStart_Paint() {
@@ -34,6 +39,7 @@ function dynamicRelocationStart_Paint() {
     animCount++;
     if (animCount === animTotal){
         clearInterval(intervalId);
+        document.getElementById("submitButton").disabled = false;
     }
     /*
     if (animCount && animTotal && animCount <= animTotal){
