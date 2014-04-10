@@ -5,6 +5,7 @@ var memBar;
 
 function MemBar(x, y, height)
 {
+    this.apps = [];
     this.x = x;
     this.y = y;
     this.height = height;
@@ -20,19 +21,27 @@ function MemBar(x, y, height)
     ctx.stroke();
 }
 
-MemBar.prototype.fill = function (limit, color) {
-    if (this.filled + limit < this.height) {
+MemBar.prototype.addApp = function(limit, color)
+{
+    if ((limit>0) && (this.filled + limit < this.height)) {
         var base = this.filled;
         this.filled += limit;
+        var x = document.getElementById("useApp");
+        var option = document.createElement("option");
+        option.style="background:"+color
+        option.value=this.apps.length
+        x.add(option);
         ctx.fillStyle = color;
         ctx.fillRect(this.x+1,this.y + base,78,limit);
-    } else alert("Application too large!");
+
+        this.apps.push({"base":base, "limit":limit});
+    } else alert("Invalid size!");
 };
 
 function addApp(e) {
     if (e.preventDefault) e.preventDefault();
     randColor = '#'+('00000'+(Math.random()*(1<<24)|0).toString(16)).slice(-6);
-    memBar.fill(parseInt(getParameter("appSize"),10), randColor);
+    memBar.addApp(parseInt(getParameter("appSize"),10), randColor);
     return false;
 }
 

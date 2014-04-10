@@ -33,13 +33,18 @@ function setPage(url){
             $("#submitButton").on('click', dynamicRelocation_Start);
             break;
         case "2":
-            addParameter("Size of new application (KB): ", "appSize")
+            addParameter("Size of new application (KB): ", "appSize");
+            addDropBox("select application: ", "useApp");
             initBinding();
             break;
         case "swapping":
             addParameter("Process memory amount", "memAmount");
             $("#submitButton").on('click', startTheSwap);
             initSwap();
+            break;
+        case "segmentation":
+            initSegmentation();
+            break;
     }
     window.location = "#content_div";
     
@@ -60,7 +65,22 @@ function addParameter(labelName, inputId) {
     cell2.appendChild(input);
     row.appendChild(cell1);
     row.appendChild(cell2);
-    var cont = document.getElementById("parameters")
+    var cont = document.getElementById("parameters");
+    cont.appendChild(row);
+}
+
+function addDropBox(labelName, selectId)
+{
+    var row = document.createElement("tr");
+    var cell1 = document.createElement("td");
+    var cell2 = document.createElement("td");
+    var select = document.createElement("select");
+    select.id = selectId;
+    cell1.textContent = labelName;
+    cell2.appendChild(select);
+    row.appendChild(cell1);
+    row.appendChild(cell2);
+    var cont = document.getElementById("parameters");
     cont.appendChild(row);
 }
 
