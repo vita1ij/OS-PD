@@ -32,9 +32,9 @@ function setPage(url){
             addParameter("relocation register", "reloc");
             $("#submitButton").on('click', dynamicRelocation_Start);
             break;
-        case "binding":
-            addParameter("Size of new application (KB): ", "appSize");
-            addDropBox("select application: ", "useApp");
+        case "paging":
+            addParameter("Size of one frame (KB, max 1024): ", "frameSize");
+            addParameter("Free frames: ", "appSize");
             initBinding();
             break;
         case "swapping":

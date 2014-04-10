@@ -52,6 +52,8 @@ MemBar.prototype.setFreeFrames = function(count, frameSize)
         }
         $("#submitButton").off('click', genFrames);
         $("#submitButton").on('click', newApp);
+        initParameters();
+        addParameter("Application size (KB): ", "appSize");
     } else alert("Frame count must be in 1.."+this.fCount);
 }
 
@@ -131,7 +133,10 @@ function drawApp4(appSize, color, step)
 
 function genFrames(e) {
     if (e.preventDefault) e.preventDefault();
-    memBar.setFreeFrames(parseInt(getParameter("appSize"),10), 1);
+    var frameSize = parseInt(getParameter("frameSize"));
+    if ([1,2,4,8,16,32,64,128,256,512,1024].indexOf(frameSize) > -1) {
+        memBar.setFreeFrames(parseInt(getParameter("appSize"),10), frameSize);
+    } else alert("Incorrect frame size!");
     return false;
 }
 
